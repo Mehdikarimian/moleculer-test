@@ -19,11 +19,8 @@ pipeline {
     }
     stage('build docker') {
       steps {
-        withEnv(overrides: ["PATH=$PATH:~/.local/bin"]) {
-          sh 'docker-compose --version'
-          sh 'docker-compose build'
-        }
-
+        sh '/usr/local/bin/docker-compose --version'
+        sh '/usr/local/bin/docker-compose build'
       }
     }
     stage('run docker') {
