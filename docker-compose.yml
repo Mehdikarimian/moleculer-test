@@ -10,7 +10,5 @@ services:
       SERVICES: greeter
     external_links:
       - redis:redis
-      - mongo:mongo
       - nats:nats
-      - logstash:logstash
     network_mode: bridge
