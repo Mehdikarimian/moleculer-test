@@ -19,13 +19,17 @@ pipeline {
     }
     stage('build docker') {
       steps {
-        sh 'docker-compose --version'
-        sh 'docker-compose build'
+        withEnv(["PATH=$PATH:~/.local/bin"]) {
+          sh 'docker-compose --version'
+          sh 'docker-compose build'
+        }
       }
     }
     stage('run docker') {
       steps {
-        sh 'docker-compose up -d'
+        withEnv(["PATH=$PATH:~/.local/bin"]) {
+          sh 'docker-compose up -d'
+        }
       }
     }
   }
