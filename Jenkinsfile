@@ -19,6 +19,7 @@ pipeline {
     }
     stage('build docker') {
       steps {
+        sh 'docker-compose --version'
         sh 'docker-compose build'
       }
     }
