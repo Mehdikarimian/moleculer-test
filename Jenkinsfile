@@ -1,7 +1,7 @@
 pipeline {
   agent {
-    docker {
-      image 'node:8-alpine'
+    dockerfile {
+      filename 'Dockerfile'
     }
 
   }
@@ -19,21 +19,20 @@ pipeline {
     }
     stage('build docker') {
       steps {
-        withEnv(["PATH=$PATH:~/.local/bin"]) {
+        withEnv(overrides: ["PATH=$PATH:~/.local/bin"]) {
           sh 'docker-compose --version'
           sh 'docker-compose build'
         }
+
       }
     }
     stage('run docker') {
       steps {
-        withEnv(["PATH=$PATH:~/.local/bin"]) {
+        withEnv(overrides: ["PATH=$PATH:~/.local/bin"]) {
           sh 'docker-compose up -d'
         }
+
       }
     }
-  }
-  environment {
-    PATH = '~/.local/bin'
   }
 }
