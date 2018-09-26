@@ -9,6 +9,5 @@ services:
     environment:
       SERVICES: greeter
     external_links:
-      - redis:redis
       - nats:nats
     network_mode: bridge
