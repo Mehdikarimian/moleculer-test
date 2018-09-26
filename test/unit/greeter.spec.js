@@ -17,7 +17,7 @@ describe("Test 'greeter' service", () => {
 
   describe("Test 'greeter.welcome' action", () => {
     it("should return with 'Welcome'", () => {
-      expect(broker.call('greeter.welcome', { name: 'Adam' })).resolves.toBe('Welcome, Adam')
+      expect(broker.call('greeter.welcome', { name: 'Adam' })).resolves.toBe('Welcom, Adam')
     })
 
     it('should reject an ValidationError', () => {
