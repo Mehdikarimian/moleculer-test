@@ -17,9 +17,14 @@ pipeline {
         sh 'npm run test'
       }
     }
-    stage('run') {
+    stage('build docker') {
       steps {
-        sh 'TRANSPORTER_HOST=nats npm start'
+        sh 'docker-compose build'
+      }
+    }
+    stage('run docker') {
+      steps {
+        sh 'docker-compose up -d'
       }
     }
   }
